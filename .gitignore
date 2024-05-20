@@ -1,0 +1,17 @@
+# OSX
+.DS_Store
+
+# vscode
+.vscode/
+
+# node_modules
+node_modules/
+
+# npm & yarn
+npm-debug.log
+yarn-error.log
+
+# build
+/build
+*.jsbundle
+
