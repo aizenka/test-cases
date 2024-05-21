@@ -10,20 +10,23 @@ interface CasesListProps {
   className?: string
 }
 
-// TODO: add skeleton
+// TODO: add skeleton for cards and images
 
 export const CasesList = memo((props: CasesListProps) => {
   const { className } = props
   const [cases, isLoading] = useUnit([$cases, getCasesFx.pending])
 
-  const splitedArray = useMemo(() => {
+  const splitedCasesArray = useMemo(() => {
     const middleIndex = Math.ceil(cases.length / 2)
     return [cases.slice(0, middleIndex), cases.slice(middleIndex)]
   }, [cases])
 
   if (isLoading) {
-    // TODO: add styles
-    return <RippleLoader />
+    return (
+      <Column vAlign='center' align='center'>
+        <RippleLoader />
+      </Column>
+    )
   }
 
   return (
@@ -32,7 +35,7 @@ export const CasesList = memo((props: CasesListProps) => {
       gap={32}
     >
       {
-        splitedArray.map((array) => (
+        splitedCasesArray.map((array) => (
           <Column
             key={generateUUID()}
             gap={32}

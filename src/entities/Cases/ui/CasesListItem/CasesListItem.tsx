@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { classNames } from '@/shared/lib/common'
 import { Column, LazyImage, RippleLoader } from '@/shared/ui'
 import { useHover } from '@/shared/lib/hooks'
@@ -22,7 +22,7 @@ export const CasesListItem = memo((props: CasesListItemProps) => {
     filters,
     image
   } = props
-
+  const [cardHeight, setCardHeight] = useState<number>(0)
   const [isHovered, { onMouseEnter, onMouseLeave }] = useHover()
 
   return (
@@ -33,7 +33,8 @@ export const CasesListItem = memo((props: CasesListItemProps) => {
       vAlign='end'
       style={{
         backgroundColor: `#${caseColor}`,
-        color: getContrastColor(caseColor)
+        color: getContrastColor(caseColor),
+        height: cardHeight || 385
       }}
     >
       {
@@ -51,6 +52,7 @@ export const CasesListItem = memo((props: CasesListItemProps) => {
             src={image}
             alt={`Case image ${title}`}
             fallback={<RippleLoader />}
+            onImageLoad={({ height }) =>  setCardHeight(height)}
           />
         )
       }

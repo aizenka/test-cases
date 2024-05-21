@@ -5,6 +5,7 @@ interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string,
   src: string,
   alt: string,
+  onImageLoad?: ({ width, height }: { width: number, height: number }) => void
   fallback?: ReactNode
   errorFallback?: ReactNode
 }
@@ -15,6 +16,7 @@ export const LazyImage = memo((props: LazyImageProps) => {
     className,
     src,
     alt = 'image',
+    onImageLoad,
     fallback,
     errorFallback,
     ...extraProps
@@ -26,8 +28,15 @@ export const LazyImage = memo((props: LazyImageProps) => {
     const img = new Image()
     img.src = src ?? ''
 
-    img.onload = () => {
+    img.onload = (element) => {
       setIsLoading(false)
+
+      const target = element.target as HTMLImageElement
+
+      const width = target.width || 0
+      const height = target.height || 0
+
+      onImageLoad && onImageLoad({ width, height })
     }
 
     img.onerror = () => {
@@ -35,7 +44,7 @@ export const LazyImage = memo((props: LazyImageProps) => {
       setIsLoading(false)
     }
 
-  }, [src])
+  }, [src, onImageLoad])
 
   if (isLoading && fallback) {
     return fallback
@@ -44,7 +53,6 @@ export const LazyImage = memo((props: LazyImageProps) => {
   if (hasError && errorFallback) {
     return errorFallback
   }
-
 
   return (
     <img
