@@ -1,1 +1,1 @@
-export { default as classNames } from './classNames/classNames'
+export { default as classNames } from './classNames'

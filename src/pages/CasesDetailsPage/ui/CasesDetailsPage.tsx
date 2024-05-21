@@ -2,7 +2,10 @@ import { memo } from 'react'
 
 const CasesDetailsPage = memo(() => {
   return (
-    <div>CasesDetailsPage</div>
+    <div>
+      CasesDetails
+      testimonial
+    </div>
   )
 })
 

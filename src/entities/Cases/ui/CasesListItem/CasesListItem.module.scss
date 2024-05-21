@@ -1,0 +1,23 @@
+.casesListItem {
+  height: 385px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.caseCardImage {
+  height: 100%;
+  object-fit: contain;
+}
+
+.hoveredContent {
+  padding: 0 15px 15px;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.filters {
+  font-size: 20px;
+  line-height: 24px;
+}

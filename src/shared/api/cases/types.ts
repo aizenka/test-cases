@@ -3,10 +3,11 @@ export interface CaseCardFilters {
   Name: string
 }
 
-export interface CaseCardData {
+export interface CasesResponseCardData {
   Id: string
   Image: string
   CaseColor: string
+  Title: string
   FeaturesTitle: string
   FriendlyURL: string
   Filters: CaseCardFilters[]
@@ -14,5 +15,5 @@ export interface CaseCardData {
 
 export interface CasesResponse {
   Error: null,
-  Data: CaseCardData[]
+  Data: CasesResponseCardData[]
 }
