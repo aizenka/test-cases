@@ -7,6 +7,10 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     path: getRouteCases(),
     element: <CasesPage />
   },
+  // [AppRoutes.CASES_FILTER]: {
+  //   path: getRouteCasesDetails(':id'),
+  //   element: <CasesPage />
+  // },
   [AppRoutes.CASES_DETAILS]: {
     path: getRouteCasesDetails(':id'),
     element: <CasesDetailsPage />

@@ -1,5 +1,6 @@
 import axios from 'axios'
-import type { CasesResponse } from './types'
+import type { CaseResponse } from './types/caseTypes'
+import type { CasesResponse } from './types/casesTypes'
 
 const api = axios.create({
   baseURL: 'https://services.it-cron.ru/api',
@@ -21,5 +22,23 @@ export const getCases = async () => {
 }
 
 export const getCaseById = async (id: string) => {
-  return api.get(`/cases/${id}`)
+  try {
+    const { data } = await api.get<CaseResponse>(`/cases/${id}`)
+
+    return data.Data
+  } catch (e) {
+    console.log('Handle cases error: ', e)
+    return []
+  }
 }
+
+// export const getCaseByFriendlyURL = async (friendlyURL: string) => {
+//   try {
+//     const { data } = await api.get(`/cases/${friendlyURL}`)
+
+//     return data.Data
+//   } catch (e) {
+//     console.log('Handle cases error: ', e)
+//     return []
+//   }
+// }

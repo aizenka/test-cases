@@ -17,6 +17,7 @@ export const Header = memo((props: HeaderProps) => {
       align='between'
     >
       <div className={cls.title}>Кейсы</div>
+      {/* TODO: add feature CasesFiltersButton */}
       <Row gap={24} vAlign='center'>
         <div className={cls.animationRhomb} />
         <div className={cls.animationLine} />

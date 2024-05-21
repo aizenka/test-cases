@@ -1,22 +1,27 @@
 import { memo, useState } from 'react'
 import { classNames } from '@/shared/lib/common'
-import { Column, LazyImage, RippleLoader } from '@/shared/ui'
+import { AppLink, Column, LazyImage, RippleLoader } from '@/shared/ui'
+import { getRouteCasesDetails } from '@/shared/constants/router'
 import { useHover } from '@/shared/lib/hooks'
 import { getContrastColor } from '@/shared/lib/helpers'
 import cls from './CasesListItem.module.scss'
-import type { CaseCardFilters } from '@/shared/api/cases/types'
+import type { AvailableFilters } from '@/shared/api/cases/types/common'
 
 interface CasesListItemProps {
   className?: string
+  id: string
+  friendlyURL?: string
   image: string
   caseColor: string
   title: string,
-  filters: CaseCardFilters[]
+  filters: AvailableFilters[]
 }
 
 export const CasesListItem = memo((props: CasesListItemProps) => {
   const{
     className,
+    id,
+    // friendlyURL,
     caseColor,
     title,
     filters,
@@ -26,36 +31,41 @@ export const CasesListItem = memo((props: CasesListItemProps) => {
   const [isHovered, { onMouseEnter, onMouseLeave }] = useHover()
 
   return (
-    <Column
-      className={classNames(cls.casesListItem, {}, [className])}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      vAlign='end'
-      style={{
-        backgroundColor: `#${caseColor}`,
-        color: getContrastColor(caseColor),
-        height: cardHeight || 385
-      }}
+    <AppLink
+      to={getRouteCasesDetails(id)}
+      target='self'
     >
-      {
-        isHovered ? (
-          <Column
-            className={cls.hoveredContent}
-            gap={16}
-          >
-            <div className={cls.title}>{title}</div>
-            <div className={cls.filters}>{filters.map(f => f.Name).join(', ')}</div>
-          </Column>
-        ) : (
-          <LazyImage
-            className={cls.caseCardImage}
-            src={image}
-            alt={`Case image ${title}`}
-            fallback={<RippleLoader />}
-            onImageLoad={({ height }) =>  setCardHeight(height)}
-          />
-        )
-      }
-    </Column>
+      <Column
+        className={classNames(cls.casesListItem, {}, [className])}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        vAlign='end'
+        style={{
+          backgroundColor: `#${caseColor}`,
+          color: getContrastColor(caseColor),
+          height: cardHeight || 385
+        }}
+      >
+        {
+          isHovered ? (
+            <Column
+              className={cls.hoveredContent}
+              gap={16}
+            >
+              <div className={cls.title}>{title}</div>
+              <div className={cls.filters}>{filters.map(f => f.Name).join(', ')}</div>
+            </Column>
+          ) : (
+            <LazyImage
+              className={cls.caseCardImage}
+              src={image}
+              alt={`Case image ${title}`}
+              fallback={<RippleLoader />}
+              onImageLoad={({ height }) =>  setCardHeight(height)}
+            />
+          )
+        }
+      </Column>
+    </AppLink>
   )
 })

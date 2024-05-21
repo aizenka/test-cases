@@ -1,7 +1,4 @@
-export interface CaseCardFilters {
-  Id: string
-  Name: string
-}
+import type { AvailableFilters } from './common'
 
 export interface CasesResponseCardData {
   Id: string
@@ -10,7 +7,7 @@ export interface CasesResponseCardData {
   Title: string
   FeaturesTitle: string
   FriendlyURL: string
-  Filters: CaseCardFilters[]
+  Filters: AvailableFilters[]
 }
 
 export interface CasesResponse {

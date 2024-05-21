@@ -7,6 +7,7 @@ const CasesPage = memo(() => {
   return (
     <Column gap={64}>
       <Header />
+      {/* filters */}
       <CasesList />
     </Column>
   )

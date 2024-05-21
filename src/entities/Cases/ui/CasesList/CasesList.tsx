@@ -46,6 +46,8 @@ export const CasesList = memo((props: CasesListProps) => {
                 return (
                   <CasesListItem
                     key={_case.Id}
+                    id={_case.Id}
+                    friendlyURL={_case.FriendlyURL}
                     image={_case.Image}
                     caseColor={_case.CaseColor}
                     title={_case.Title}
