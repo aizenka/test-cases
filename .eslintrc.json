@@ -8,6 +8,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:effector/react",
     "plugin:jsx-a11y/recommended"
   ],
   "overrides": [
@@ -36,6 +37,7 @@
     "react",
     "react-hooks",
     "@typescript-eslint",
+    "effector",
     "jsx-a11y",
     "import-helpers",
     "unused-imports"

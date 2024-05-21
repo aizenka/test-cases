@@ -1,7 +1,12 @@
-import cls from './App.module.scss'
+import { AppRouter } from './providers/Router'
 
-export default function App () {
+
+const App = () => {
   return (
-    <div className={cls.app}>333</div>
+    <div>
+      <AppRouter />
+    </div>
   )
 }
+
+export default App
