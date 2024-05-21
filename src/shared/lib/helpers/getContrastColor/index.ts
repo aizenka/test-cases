@@ -9,7 +9,6 @@ const GREEN_WEIGHT = 587
 const BLUE_WEIGHT = 114
 const BRIGHTNESS_DIVISOR = 1000
 
-
 const getContrastColor = (hexColor: string) => {
   const matchResult = hexColor.match(/\w\w/g)
   const [r, g, b] = (
@@ -24,8 +23,5 @@ const getContrastColor = (hexColor: string) => {
 
   return brightness > BRIGHTNESS_THRESHOLD ? BLACK_COLOR : WHITE_COLOR
 }
-
-
-
 
 export default getContrastColor
