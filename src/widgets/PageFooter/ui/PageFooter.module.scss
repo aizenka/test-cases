@@ -1,0 +1,51 @@
+.pageFooter {
+  padding-bottom: 40px;
+}
+
+.separator {
+  width: 2px;
+  height: 60px;
+  opacity: .5;
+  background-color: var(--text-color);
+}
+
+.title {
+  font-size: 36px;
+}
+
+.corpEmail {
+  font-size: 80px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.requestButton {
+  width: 250px;
+  height: 250px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.requestButtonText {
+  color: var(--text-color);
+  font-size: 24px;
+}
+
+.city {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.street {
+  font-size: 26px;
+}
+
+.contactPhone {
+  font-size: 26px;
+  color: var(--primary-color);
+  cursor: pointer;
+}

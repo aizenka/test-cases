@@ -5,6 +5,8 @@
     "scss/comment-no-empty": null,
     "length-zero-no-unit": null,
     "keyframes-name-pattern": null,
-    "scss/double-slash-comment-empty-line-before": null
+    "scss/double-slash-comment-empty-line-before": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null
   }
 }

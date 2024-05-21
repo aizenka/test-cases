@@ -1,6 +1,6 @@
 @import 'reset';
 @import 'variables/global';
 
-body {
-  font: var(--font-s);
+.appLayout {
+  padding: var(--layout-padding);
 }

@@ -3,13 +3,13 @@ import { Layout } from 'antd'
 import cls from './BaseLayout.module.scss'
 import type { CSSProperties, ReactNode } from 'react'
 
-interface IBaseLayoutProps {
+interface BaseLayoutProps {
   className?: string
   children: ReactNode
   style?: CSSProperties
 }
 
-export const BaseLayout = (props: IBaseLayoutProps) => {
+export const BaseLayout = (props: BaseLayoutProps) => {
   const { className, children, style } = props
 
   return (

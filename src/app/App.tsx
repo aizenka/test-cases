@@ -1,11 +1,15 @@
-import { BaseLayout } from '@/shared/ui'
+import { BaseLayout, Column } from '@/shared/ui'
+import { PageFooter } from '@/widgets/PageFooter'
 import { AppRouter } from './providers/Router'
 import './styles/index.scss'
 
 const App = () => {
   return (
-    <BaseLayout>
-      <AppRouter />
+    <BaseLayout className='appLayout'>
+      <Column gap={38}>
+        <AppRouter />
+        <PageFooter />
+      </Column>
     </BaseLayout>
   )
 }
