@@ -6,7 +6,7 @@ import './styles/index.scss'
 const App = () => {
   return (
     <BaseLayout className='appLayout'>
-      <Column gap={38}>
+      <Column gap={64}>
         <AppRouter />
         <PageFooter />
       </Column>

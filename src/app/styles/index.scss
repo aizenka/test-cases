@@ -2,5 +2,6 @@
 @import 'variables/global';
 
 .appLayout {
+  min-height: 100vh;
   padding: var(--layout-padding);
 }
