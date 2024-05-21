@@ -31,12 +31,14 @@ export const LazyImage = memo((props: LazyImageProps) => {
     img.onload = (element) => {
       setIsLoading(false)
 
-      const target = element.target as HTMLImageElement
+      if (onImageLoad) {
+        const target = element.target as HTMLImageElement
 
-      const width = target.width || 0
-      const height = target.height || 0
+        const width = target.width || 0
+        const height = target.height || 0
 
-      onImageLoad && onImageLoad({ width, height })
+        onImageLoad({ width, height })
+      }
     }
 
     img.onerror = () => {
