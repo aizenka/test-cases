@@ -21,7 +21,7 @@ export const CasesFiltersButton = memo((props: CasesFiltersButtonProps) => {
   return (
     <Row
       className={classNames('', {}, [className])}
-      gap={24}
+      gap={16}
       vAlign='center'
     >
       {
@@ -29,6 +29,7 @@ export const CasesFiltersButton = memo((props: CasesFiltersButtonProps) => {
           <Row
             gap={24}
             vAlign='center'
+            className={cls.clearButtonWrapper}
           >
             <div
               className={cls.clearButton}
@@ -51,7 +52,10 @@ export const CasesFiltersButton = memo((props: CasesFiltersButtonProps) => {
         )}
         onClick={onToggle}
       />
-      <div className={cls.animationLine} />
+      <div className={classNames(
+        cls.animationLine,
+        { [cls.hidden]: filtersOpened }
+      )} />
       <div
         className={classNames(cls.casesFiltersButton, { [cls.active]: filtersOpened } )}
         onClick={onToggle}
