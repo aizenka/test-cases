@@ -15,6 +15,13 @@ The project was written in accordance with the Feature Sliced ​​Design metho
 
 ----
 
+## Routing
+
+- [/](/src/pages/CasesPage) - Cases page
+- [/cases/:id](/src/pages/CasesDetailsPage) - CaseDetails page
+
+----
+
 ### Build and Development Tools:
 
 - **Webpack** - a tool for building and developing projects.

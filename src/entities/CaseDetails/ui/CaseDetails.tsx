@@ -1,18 +1,14 @@
 import { memo, useLayoutEffect } from 'react'
 import { useUnit } from 'effector-react'
 import { classNames } from '@/shared/lib/common'
-import { AppLink, Column, LazyImage, RippleLoader, Row } from '@/shared/ui'
-import NavigateIcon from '@/shared/assets/icons/icon-navigate.svg'
-import CheckIcon from '@/shared/assets/icons/icon-check.svg'
-import { getRouteCases } from '@/shared/constants/router'
+import { Column, RippleLoader, Row } from '@/shared/ui'
 import { Card, QRCode } from 'antd'
 import { Testimonial } from '@/entities/Testimonial'
-import { generateUUID, getContrastColor } from '@/shared/lib/helpers'
+import { Categories, Features, Header, ImagesBlock } from './components'
+import { getContrastColor } from '@/shared/lib/helpers'
 import { $case, getCaseFx } from '../model/services/getCaseById'
 import cls from './CaseDetails.module.scss'
 import type { CommonFields } from '@/shared/api/commonTypes'
-
-// TODO: split into components
 
 interface CaseDetailsProps {
   className?: string
@@ -44,23 +40,13 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
       className={classNames(cls.caseDetails, {}, [className])}
       gap={64}
     >
-      <Column gap={32}>
-        <div className={cls.subtitle}>Кейс</div>
-        <div className={cls.title}>{_case.Title}</div>
-        <AppLink to={getRouteCases()} className={cls.backButtonWrapper}>
-          <NavigateIcon className={cls.backButton}/>
-        </AppLink>
-      </Column>
+      <Header title={_case.Title} />
       <Row align='between'>
-        <Column
-          className={cls.categoriesWrapper}
-          gap={32}
-        >
-          <div className={cls.subtitle}>Категория проекта</div>
-          <div className={cls.text}>
-            {getSplittedText(_case.Filters, ', ')}
-          </div>
-        </Column>
+        {
+          _case?.Filters?.length > 0 && (
+            <Categories filters={getSplittedText(_case.Filters, ', ')}/>
+          )
+        }
         <QRCode
           value={_case.ShortQrCode || 'https://it-cron.ru'}
           bgColor='#fff'
@@ -69,54 +55,52 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
       </Row>
       {
         _case?.Images?.length > 0 && (
-          <Row
-            className={cls.imagesContainer}
-            style={{ backgroundColor: `#${_case.CaseColor}` }}
-            align='around'
-            gap={64}
-          >
-            {
-              _case.Images.map((image) => {
-                return (
-                  <LazyImage
-                    key={image}
-                    className={cls.caseImage}
-                    src={image}
-                    alt={_case.Title}
-                  />
-                )
-              })
-            }
-          </Row>
+          <ImagesBlock
+            caseColor={_case.CaseColor}
+            images={_case.Images}
+            title={_case.Title}
+          />
         )
       }
       <Column gap={32}>
         <div className={cls.subtitle}>Задача</div>
         <div className={cls.text}>{_case.Task}</div>
       </Column>
-      <Card
-        className={cls.card}
-        style={{
-          color: getContrastColor(_case.CaseColor),
-          backgroundColor: `#${_case.CaseColor}`
-        }}
-        bordered={false}
-      >
-        <Column gap={64}>
-          <Column gap={32}>
-            <div className={cls.subtitle}>Технология</div>
-            <div className={cls.text}>
-              {getSplittedText(_case.Technologies, ' ')}
-            </div>
-          </Column>
-          <Column gap={32}>
-            <div className={cls.subtitle}>Платформа</div>
-            <div className={cls.text}>
-              {getSplittedText(_case.Platforms, ' ')}
-            </div>
-          </Column>
-        </Column>
-      </Card>
+      {
+        (_case?.Technologies || _case?.Platforms) && (
+          <Card
+            className={cls.card}
+            style={{
+              color: getContrastColor(_case.CaseColor),
+              backgroundColor: `#${_case.CaseColor}`
+            }}
+            bordered={false}
+          >
+            <Column gap={64}>
+              {
+                _case.Technologies.length > 0 && (
+                  <Column gap={32}>
+                    <div className={cls.subtitle}>Технология</div>
+                    <div className={cls.text}>
+                      {getSplittedText(_case.Technologies, ' ')}
+                    </div>
+                  </Column>
+                )
+              }
+              {
+                _case.Platforms.length > 0 && (
+                  <Column gap={32}>
+                    <div className={cls.subtitle}>Платформа</div>
+                    <div className={cls.text}>
+                      {getSplittedText(_case.Platforms, ' ')}
+                    </div>
+                  </Column>
+                )
+              }
+            </Column>
+          </Card>
+        )
+      }
       {
         _case?.Stages?.length > 0 && (
           <Column gap={32}>
@@ -129,34 +113,11 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
       }
       {
         _case?.FeaturesDone?.length > 0 && (
-          <Card
-            className={cls.card}
-            style={{
-              color: getContrastColor(_case.CaseColor),
-              backgroundColor: `#${_case.CaseColor}`
-            }}
-            bordered={false}
-          >
-            <Column gap={32}>
-              <div className={cls.subtitle}>{_case.FeaturesTitle}</div>
-              <Column gap={24}>
-                {
-                  _case.FeaturesDone.map((feature) => {
-                    return (
-                      <Row
-                        key={generateUUID()}
-                        gap={32}
-                        vAlign='center'
-                      >
-                        <CheckIcon fill={getContrastColor(_case.CaseColor)} />
-                        <div className={cls.text}>{feature}</div>
-                      </Row>
-                    )
-                  })
-                }
-              </Column>
-            </Column>
-          </Card>
+          <Features
+            caseColor={_case.CaseColor}
+            featuresTitle={_case.FeaturesTitle}
+            featuresDone={_case.FeaturesDone}
+          />
         )
       }
       <Column gap={32}>
