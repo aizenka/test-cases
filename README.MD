@@ -35,7 +35,7 @@ The project was written in accordance with the Feature Sliced ​​Design metho
 [![ReactRouter][ReactRouter]][ReactRouter-url]
 [![Antd][Antd]][Antd-url]
 [![Axios][Axios]][Axios-url]
-[Effector][Effector-url]
+[![Effector][Effector]][Effector-url]
 
 ----
 
@@ -75,6 +75,7 @@ The project was written in accordance with the Feature Sliced ​​Design metho
 [FSD]: https://img.shields.io/badge/Feature--Sliced-Design?style=for-the-badge&color=F2F2F2&labelColor=262224&logoWidth=10&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABISURBVHgB7dKxCQAgDETR0w2cws0cys2cwhEUBbsggikCuVekDHwSQFlYo7Q+8KnmtHdFWMdk2cl5wSsbxGSZw8dm8pX9ZHUTMBUgGU2F718AAAAASUVORK5CYII=
 
 [React]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[Effector]: https://img.shields.io/badge/Effector%20-orange?style=for-the-badge
 [Antd]: https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white
 [Axios]: https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white
 [Webpack]: https://img.shields.io/badge/Webpack-FFF?style=for-the-badge&logo=webpack&logoColor=blue
