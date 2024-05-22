@@ -1,5 +1,6 @@
 .casesFilters {
   position: relative;
+  animation: slideIn 0.5s ease
 }
 
 .separatorLine {
@@ -27,4 +28,16 @@
 
 .section {
   flex: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    width: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    width: 100%;
+  }
 }

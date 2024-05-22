@@ -1,7 +1,7 @@
 import { memo, useEffect } from 'react'
 import { useUnit } from 'effector-react'
 import { classNames } from '@/shared/lib/common'
-import { Column, RippleLoader, Row } from '@/shared/ui'
+import { Column, Row } from '@/shared/ui'
 import { $casesFilters, getCasesFiltersFx } from '../model/services/getCasesFilters'
 import { $selectedFilterIds, toggleFilter } from '../model/services/handleCasesFilters'
 import cls from './CasesFilters.module.scss'
@@ -13,10 +13,9 @@ interface CasesFiltersProps {
 
 export const CasesFilters = memo((props: CasesFiltersProps) => {
   const { className, isOpen } = props
-  const [filters, getFilters, isLoading] = useUnit([
+  const [filters, getFilters] = useUnit([
     $casesFilters,
-    getCasesFiltersFx,
-    getCasesFiltersFx.pending
+    getCasesFiltersFx
   ])
   const [selectedFilterIds, onToggleFilter] = useUnit([
     $selectedFilterIds,
@@ -24,26 +23,17 @@ export const CasesFilters = memo((props: CasesFiltersProps) => {
   ])
 
   useEffect(() => {
-    if (!isOpen) return
 
     getFilters()
   }, [isOpen, getFilters])
-
-  if (isOpen && isLoading) {
-    return (
-      <Column vAlign='center' align='center'>
-        <RippleLoader />
-      </Column>
-    )
-  }
-
-  if (!isOpen) return null
 
   return (
     <Row
       className={classNames(cls.casesFilters, {}, [className])}
       align='between'
       gap={38}
+      style={{ display: isOpen ? 'flex' : 'none' }}
+
     >
       <div className={cls.separatorLine} />
       {
