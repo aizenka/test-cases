@@ -10,7 +10,6 @@ interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   errorFallback?: ReactNode
 }
 
-// TODO: add story
 export const LazyImage = memo((props: LazyImageProps) => {
   const {
     className,

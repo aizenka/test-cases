@@ -3,11 +3,7 @@ import { useUnit } from 'effector-react'
 import { classNames } from '@/shared/lib/common'
 import { Column, RippleLoader, Row } from '@/shared/ui'
 import { $casesFilters, getCasesFiltersFx } from '../model/services/getCasesFilters'
-import {
-  $selectedFilterIds,
-  toggleFilter,
-  clearSelectedFilters
-} from '../model/services/handleCasesFilters'
+import { $selectedFilterIds, toggleFilter } from '../model/services/handleCasesFilters'
 import cls from './CasesFilters.module.scss'
 
 interface CasesFiltersProps {
@@ -22,21 +18,16 @@ export const CasesFilters = memo((props: CasesFiltersProps) => {
     getCasesFiltersFx,
     getCasesFiltersFx.pending
   ])
-  const [selectedFilterIds, onToggleFilter, onClearSelectedFilters] = useUnit([
+  const [selectedFilterIds, onToggleFilter] = useUnit([
     $selectedFilterIds,
-    toggleFilter,
-    clearSelectedFilters
+    toggleFilter
   ])
 
   useEffect(() => {
     if (!isOpen) return
 
     getFilters()
-
-    return () => {
-      onClearSelectedFilters()
-    }
-  }, [isOpen, getFilters, onClearSelectedFilters])
+  }, [isOpen, getFilters])
 
   if (isOpen && isLoading) {
     return (
@@ -52,6 +43,7 @@ export const CasesFilters = memo((props: CasesFiltersProps) => {
     <Row
       className={classNames(cls.casesFilters, {}, [className])}
       align='between'
+      gap={38}
     >
       <div className={cls.separatorLine} />
       {

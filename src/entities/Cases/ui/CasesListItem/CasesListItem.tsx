@@ -60,7 +60,11 @@ export const CasesListItem = memo((props: CasesListItemProps) => {
               className={cls.caseCardImage}
               src={image}
               alt={`Case image ${title}`}
-              fallback={<RippleLoader />}
+              fallback={
+                <Column vAlign='center' align='center'>
+                  <RippleLoader />
+                </Column>
+              }
               onImageLoad={({ height }) =>  setCardHeight(height)}
             />
           )

@@ -72,7 +72,7 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
           <Row
             className={cls.imagesContainer}
             style={{ backgroundColor: `#${_case.CaseColor}` }}
-            align='center'
+            align='around'
             gap={64}
           >
             {
@@ -117,12 +117,16 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
           </Column>
         </Column>
       </Card>
-      <Column gap={32}>
-        <div className={cls.subtitle}>Этапы</div>
-        <div className={cls.text}>
-          {getSplittedText(_case.Stages, ', ')}
-        </div>
-      </Column>
+      {
+        _case?.Stages?.length > 0 && (
+          <Column gap={32}>
+            <div className={cls.subtitle}>Этапы</div>
+            <div className={cls.text}>
+              {getSplittedText(_case.Stages, ', ')}
+            </div>
+          </Column>
+        )
+      }
       {
         _case?.FeaturesDone?.length > 0 && (
           <Card

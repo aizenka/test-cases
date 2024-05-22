@@ -16,9 +16,31 @@
   margin-right: 32px;
   cursor: pointer;
 
-  &.active {
+  &.filtersOpened {
     background-color: var(--common-color);
   }
+
+  &.withClearButton {
+    background-color: transparent;
+    border-color: var(--primary-color);
+  }
+
+  &.openedWithClearButton {
+    background-color: var(--common-color);
+    border-color: var(--primary-color);
+  }
+}
+
+.clearButton {
+  font-size: 24px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.clearAnimationLine {
+  border: 1px solid #fb6542;
+  width: 35px;
+  height: 0;
 }
 
 .animationLine {
