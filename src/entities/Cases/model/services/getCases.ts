@@ -1,8 +1,12 @@
 import { getCases } from '@/shared/api/cases'
-import { createEffect, restore } from 'effector'
+import { showErrorNotificationFx } from '@/shared/lib/effector/notifications'
+import { createEffect, restore, sample } from 'effector'
 
 export const getCasesFx = createEffect(getCases)
 
 export const $cases = restore(getCasesFx, [])
 
-getCasesFx()
+sample({
+  clock: getCasesFx.failData,
+  target: showErrorNotificationFx
+})

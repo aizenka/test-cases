@@ -5,7 +5,7 @@ import type { ClsMods } from '@/shared/lib/common/classNames'
 
 type FlexJustify = 'left' | 'center' | 'right' | 'between' | 'around'
 type FlexAlign = 'start' | 'center' | 'end' | 'stretch'
-type FlexGap = 4| 8 | 16 | 24 | 32
+type FlexGap = 4| 8 | 16 | 24 | 32 | 38 | 44 | 50 | 56 | 64
 
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 

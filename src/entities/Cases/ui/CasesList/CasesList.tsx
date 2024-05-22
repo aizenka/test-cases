@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react'
+import { memo, useLayoutEffect, useMemo } from 'react'
 import { useUnit } from 'effector-react'
 import { classNames } from '@/shared/lib/common'
 import { Column, RippleLoader, Row } from '@/shared/ui'
@@ -14,7 +14,11 @@ interface CasesListProps {
 
 export const CasesList = memo((props: CasesListProps) => {
   const { className } = props
-  const [cases, isLoading] = useUnit([$cases, getCasesFx.pending])
+  const [cases, getCases, isLoading] = useUnit([$cases, getCasesFx, getCasesFx.pending])
+
+  useLayoutEffect(() => {
+    getCases()
+  }, [getCases])
 
   const splitedCasesArray = useMemo(() => {
     const middleIndex = Math.ceil(cases.length / 2)

@@ -33,7 +33,7 @@ export const CasesListItem = memo((props: CasesListItemProps) => {
   return (
     <AppLink
       to={getRouteCasesDetails(id)}
-      target='self'
+      target='_self'
     >
       <Column
         className={classNames(cls.casesListItem, {}, [className])}

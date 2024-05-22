@@ -16,8 +16,7 @@ export const getCases = async () => {
 
     return data.Data
   } catch (e) {
-    console.log('Handle cases error: ', e)
-    return []
+    throw new Error(`Handle cases error: ${e}`)
   }
 }
 
@@ -27,8 +26,7 @@ export const getCaseById = async (id: string) => {
 
     return data.Data
   } catch (e) {
-    console.log('Handle cases error: ', e)
-    return []
+    throw new Error(`Handle case error: ${e}`)
   }
 }
 

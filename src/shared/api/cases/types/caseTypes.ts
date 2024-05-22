@@ -9,12 +9,12 @@ export interface CaseResponseData {
   Title: string
   QRCode: string
   ShortQrCode: string
-  filters: AvailableFilters
+  Filters: AvailableFilters[]
   Images: string[]
   Task: string
-  Technologies: Technologies
-  Platforms: Platforms
-  Stages: Stages
+  Technologies: Technologies[]
+  Platforms: Platforms[]
+  Stages: Stages[]
   FeaturesTitle: string
   FeaturesDone: string[]
   Audience: string
