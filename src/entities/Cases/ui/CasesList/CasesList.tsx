@@ -3,7 +3,7 @@ import { useUnit } from 'effector-react'
 import { classNames } from '@/shared/lib/common'
 import { Column, RippleLoader, Row } from '@/shared/ui'
 import { generateUUID } from '@/shared/lib/helpers'
-import { $cases, getCasesFx } from '../../model/services/getCases'
+import { $filteredCases, getCasesFx } from '../../model/services/getCases'
 import { CasesListItem } from '../CasesListItem/CasesListItem'
 
 interface CasesListProps {
@@ -14,7 +14,11 @@ interface CasesListProps {
 
 export const CasesList = memo((props: CasesListProps) => {
   const { className } = props
-  const [cases, getCases, isLoading] = useUnit([$cases, getCasesFx, getCasesFx.pending])
+  const [cases, getCases, isLoading] = useUnit([
+    $filteredCases,
+    getCasesFx,
+    getCasesFx.pending
+  ])
 
   useLayoutEffect(() => {
     getCases()
