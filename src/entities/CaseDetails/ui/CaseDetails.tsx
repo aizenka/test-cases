@@ -67,25 +67,29 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
           bordered={false}
         />
       </Row>
-      <Row
-        className={cls.imagesContainer}
-        style={{ backgroundColor: `#${_case.CaseColor}` }}
-        align='center'
-        gap={64}
-      >
-        {
-          _case.Images.map((image) => {
-            return (
-              <LazyImage
-                key={image}
-                className={cls.caseImage}
-                src={image}
-                alt={_case.Title}
-              />
-            )
-          })
-        }
-      </Row>
+      {
+        _case?.Images?.length > 0 && (
+          <Row
+            className={cls.imagesContainer}
+            style={{ backgroundColor: `#${_case.CaseColor}` }}
+            align='center'
+            gap={64}
+          >
+            {
+              _case.Images.map((image) => {
+                return (
+                  <LazyImage
+                    key={image}
+                    className={cls.caseImage}
+                    src={image}
+                    alt={_case.Title}
+                  />
+                )
+              })
+            }
+          </Row>
+        )
+      }
       <Column gap={32}>
         <div className={cls.subtitle}>Задача</div>
         <div className={cls.text}>{_case.Task}</div>
@@ -119,34 +123,38 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
           {getSplittedText(_case.Stages, ', ')}
         </div>
       </Column>
-      <Card
-        className={cls.card}
-        style={{
-          color: getContrastColor(_case.CaseColor),
-          backgroundColor: `#${_case.CaseColor}`
-        }}
-        bordered={false}
-      >
-        <Column gap={32}>
-          <div className={cls.subtitle}>{_case.FeaturesTitle}</div>
-          <Column gap={24}>
-            {
-              _case.FeaturesDone.map((feature) => {
-                return (
-                  <Row
-                    key={generateUUID()}
-                    gap={32}
-                    vAlign='center'
-                  >
-                    <CheckIcon />
-                    <div className={cls.text}>{feature}</div>
-                  </Row>
-                )
-              })
-            }
-          </Column>
-        </Column>
-      </Card>
+      {
+        _case?.FeaturesDone?.length > 0 && (
+          <Card
+            className={cls.card}
+            style={{
+              color: getContrastColor(_case.CaseColor),
+              backgroundColor: `#${_case.CaseColor}`
+            }}
+            bordered={false}
+          >
+            <Column gap={32}>
+              <div className={cls.subtitle}>{_case.FeaturesTitle}</div>
+              <Column gap={24}>
+                {
+                  _case.FeaturesDone.map((feature) => {
+                    return (
+                      <Row
+                        key={generateUUID()}
+                        gap={32}
+                        vAlign='center'
+                      >
+                        <CheckIcon fill={getContrastColor(_case.CaseColor)} />
+                        <div className={cls.text}>{feature}</div>
+                      </Row>
+                    )
+                  })
+                }
+              </Column>
+            </Column>
+          </Card>
+        )
+      }
       <Column gap={32}>
         <div className={cls.subtitle}>Целевая аудитория</div>
         <div className={cls.text}>{_case.Audience}</div>
