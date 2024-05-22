@@ -1,14 +1,7 @@
-import axios from 'axios'
+import { api } from '../instance'
 import type { CaseResponse } from './types/caseTypes'
 import type { CasesResponse } from './types/casesTypes'
 
-const api = axios.create({
-  baseURL: 'https://services.it-cron.ru/api',
-  headers: {
-    'accept': 'text/plain',
-    'Accept-language': 'ru'
-  }
-})
 
 export const getCases = async () => {
   try {

@@ -1,0 +1,29 @@
+.testimonial {
+  padding: 30px 40px;
+  color: #000
+}
+
+.text {
+  font-size: 32px;
+  line-height: 1.4;
+  -webkit-line-clamp: 7;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.customerName {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.company {
+  font-size: 18px;
+}

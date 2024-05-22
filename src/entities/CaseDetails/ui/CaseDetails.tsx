@@ -6,6 +6,7 @@ import NavigateIcon from '@/shared/assets/icons/icon-navigate.svg'
 import CheckIcon from '@/shared/assets/icons/icon-check.svg'
 import { getRouteCases } from '@/shared/constants/router'
 import { Card, QRCode } from 'antd'
+import { Testimonial } from '@/entities/Testimonial'
 import { generateUUID, getContrastColor } from '@/shared/lib/helpers'
 import { $case, getCaseFx } from '../model/services/getCaseById'
 import cls from './CaseDetails.module.scss'
@@ -127,7 +128,7 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
         bordered={false}
       >
         <Column gap={32}>
-          <div className={cls.subtitle} />
+          <div className={cls.subtitle}>{_case.FeaturesTitle}</div>
           <Column gap={24}>
             {
               _case.FeaturesDone.map((feature) => {
@@ -150,6 +151,11 @@ export const CaseDetails = memo((props: CaseDetailsProps) => {
         <div className={cls.subtitle}>Целевая аудитория</div>
         <div className={cls.text}>{_case.Audience}</div>
       </Column>
+      {
+        _case.TestimonialId && (
+          <Testimonial id={_case.TestimonialId}/>
+        )
+      }
     </Column>
   )
 })
