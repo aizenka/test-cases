@@ -10,7 +10,7 @@ import { Testimonial } from '@/entities/Testimonial'
 import { generateUUID, getContrastColor } from '@/shared/lib/helpers'
 import { $case, getCaseFx } from '../model/services/getCaseById'
 import cls from './CaseDetails.module.scss'
-import type { CommonFields } from '@/shared/api/cases/types/common'
+import type { CommonFields } from '@/shared/api/commonTypes'
 
 // TODO: split into components
 

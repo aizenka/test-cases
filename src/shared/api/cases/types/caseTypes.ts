@@ -1,4 +1,4 @@
-import type { AvailableFilters, CommonFields } from './common'
+import type { AvailableFilters, CommonFields } from '../../commonTypes'
 
 export interface Technologies extends CommonFields {}
 export interface Platforms extends CommonFields {}

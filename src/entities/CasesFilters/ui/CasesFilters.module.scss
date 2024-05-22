@@ -1,0 +1,30 @@
+.casesFilters {
+  position: relative;
+}
+
+.separatorLine {
+  width: 100%;
+  right: 0;
+  border: 1px solid #fff;
+  position: absolute;
+  background-color: #fff;
+  top: 50px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+}
+
+.filterName {
+  font-size: 24px;
+  cursor: pointer;
+  width: fit-content;
+
+  &.selected {
+    color: var(--primary-color);
+  }
+}
+
+.section {
+  width: 33%;
+}

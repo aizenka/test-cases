@@ -1,4 +1,4 @@
-import type { AvailableFilters } from './common'
+import type { AvailableFilters } from '../../commonTypes'
 
 export interface CasesResponseCardData {
   Id: string

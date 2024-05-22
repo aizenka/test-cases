@@ -5,7 +5,7 @@ import { getRouteCasesDetails } from '@/shared/constants/router'
 import { useHover } from '@/shared/lib/hooks'
 import { getContrastColor } from '@/shared/lib/helpers'
 import cls from './CasesListItem.module.scss'
-import type { AvailableFilters } from '@/shared/api/cases/types/common'
+import type { AvailableFilters } from '@/shared/api/commonTypes'
 
 interface CasesListItemProps {
   className?: string

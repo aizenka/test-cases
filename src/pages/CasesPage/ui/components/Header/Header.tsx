@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/common'
 import { Row } from '@/shared/ui'
+import { CasesFiltersButton } from '@/features/CasesFiltersButton'
 import cls from './Header.module.scss'
 
 interface HeaderProps {
@@ -17,12 +18,7 @@ export const Header = memo((props: HeaderProps) => {
       align='between'
     >
       <div className={cls.title}>Кейсы</div>
-      {/* TODO: add feature CasesFiltersButton */}
-      <Row gap={24} vAlign='center'>
-        <div className={cls.animationRhomb} />
-        <div className={cls.animationLine} />
-        <div className={cls.filtersBtn}>Фильтры</div>
-      </Row>
+      <CasesFiltersButton />
     </Row>
   )
 })
